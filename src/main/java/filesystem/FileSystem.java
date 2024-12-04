@@ -143,11 +143,27 @@ public class FileSystem {
 
 
     /**
-     * Add your Javadoc documentation for this method
+     * Reads file and outputs as a String
+     * 
+     * @return
+     * @param fileDescriptor
+     * @throws IOException
      */
     public String read(int fileDescriptor) throws IOException {
-        // TODO: Replace this line with your code
-        return null;
+        try {
+
+            
+            String name = INode.this.getFileName;
+            print(name); 
+            //int x = open(name);
+            //String output = "";
+
+        } catch (IOException e) {
+           System.err.println(e.getMessage());
+           e.printStackTrace();
+        }
+        return output;
+        }
     }
 
 
@@ -155,7 +171,7 @@ public class FileSystem {
      * Add your Javadoc documentation for this method
      */
     public void write(int fileDescriptor, String data) throws IOException {
-
+D
         // TODO: Replace this line with your code
 
     }
