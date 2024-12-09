@@ -179,6 +179,7 @@ public class FileSystem {
             {
                 //update data_written as it writes to the blocks...
 
+
                 //locate block to write in
                 int block_index = offset / block_size;
                 int block_offset = offset % block_size;
