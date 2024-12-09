@@ -157,6 +157,48 @@ public class FileSystem {
     public void write(int fileDescriptor, String data) throws IOException {
 
         // TODO: Replace this line with your code
+        // reference writeDataBlock and writeInode in Disk
+        String file_name = iNodeForFile.getFileName();
+        //int starting_offset = 0;
+        int file_size = iNodeForFile.getSize();
+        byte[] file_name_in_bytes = iNodeForFile.getFileNameBytes();
+        byte[] data_in_bytes = data.getBytes();
+        int data_length = data_in_bytes.length;
+        int offset = file_size;
+        int block_size = Disk.BLOCK_SIZE;
+
+
+        if(fileDescriptor == iNodeNumber)
+        {
+            //allocate additional blocks to accommodate the file's increasing size
+            allocateBlocksForFile(iNodeNumber, data_length);
+
+            //keep track of data that has been written
+            int data_written = 0;
+            while(data_written < data_length)
+            {
+                //update data_written as it writes to the blocks...
+
+                //locate block to write in
+                int block_index = offset / block_size;
+                int block_offset = offset % block_size;
+                int block_num = iNodeForFile.getBlockPointer(block_offset);
+
+                byte[] block = diskDevice.readDataBlock(block_num);
+
+                //begin the writing process here...
+            }
+
+            //the size of the file should increase after data has been written and will need to be updated
+            iNodeForFile.setSize(file_size+data_length);
+            diskDevice.writeInode(iNodeForFile, fileDescriptor);
+        }
+        else
+        {
+            //throw an exception
+            throw new IOException("Invalid FD for file " + file_name);
+        }
+
 
     }
 
