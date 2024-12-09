@@ -1,6 +1,7 @@
 package filesystem;
 
 import java.io.IOException;
+import java.lang.*;
 
 
 public class FileSystem {
@@ -143,11 +144,25 @@ public class FileSystem {
 
 
     /**
-     * Add your Javadoc documentation for this method
+     * Reads file and outputs as a String
+     * 
+     * @return
+     * @param fileDescriptor
+     * @throws IOException
      */
     public String read(int fileDescriptor) throws IOException {
-        // TODO: Replace this line with your code
-        return null;
+        //StringBuilder output = new StringBuilder();
+        if (fileDescriptor != this.iNodeNumber) {
+            throw new IOException("FileSystem::read: " +fileDescriptor+ "does not match "+
+            "with any file.");
+        } else {
+            String fileINode = diskDevice.readInode(this.iNodeForFile);
+            String fileName = fileINode.getFileName();
+            
+
+        }
+        return fileData;
+        
     }
 
 
@@ -155,7 +170,6 @@ public class FileSystem {
      * Add your Javadoc documentation for this method
      */
     public void write(int fileDescriptor, String data) throws IOException {
-
         // TODO: Replace this line with your code
 
     }
