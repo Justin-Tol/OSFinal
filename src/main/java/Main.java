@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
     public static final int NUM_LINES = 100;
-    public static final String testData = "This is some text ";
+    public static final String testData = "This is some longer text to ensure sufficient length ";
 
     /**
      * @param args the command line arguments
