@@ -232,11 +232,21 @@ public class Disk {
    *                  an integer.
    * @return
    */
-  public static int convertByteArrayToInt(byte[] fourbytes) {
-     int val = (fourbytes[0] << 24) | (fourbytes[1] <<16) |
-               (fourbytes[1] << 8) | (fourbytes[3]);
 
-     return val;
+  /***
+  public static int convertByteArrayToInt(byte[] fourbytes) {
+      int val = (fourbytes[0] << 24) |
+              (fourbytes[1] << 16) |
+              (fourbytes[2] << 8) | (fourbytes[3]); // Correct the bit shift
+
+      return val;
+  }
+   */
+  public static int convertByteArrayToInt(byte[] fourbytes) {
+      int val = (fourbytes[0] << 24) | (fourbytes[1] <<16) |
+              (fourbytes[1] << 8) | (fourbytes[3]);
+
+      return val;
   }
 
 }
